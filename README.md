@@ -1,4 +1,6 @@
 # Memcached Admin
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/hatamiarash7/memcached-admin) ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/hatamiarash7/memcached-admin)
+
 This program allows to see in **real-time** (top-like) or from the start of the server, **stats for get, set, delete, increment, decrement, evictions, reclaimed, cas command**, as well as **server stats** (network, items, server version) with googlecharts and  **server internal configuration**
 
 You can go further to **see each server slabs, occupation, memory wasted and items** (**key & value**).
