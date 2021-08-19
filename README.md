@@ -37,7 +37,7 @@ Another part can execute commands to any memcached server : get, set, delete, fl
 
 ### Install
 
-Single server setup
+#### Single server setup
 
 Environments :  
 * **MEMCACHED_HOST** : Default address of the server
@@ -47,7 +47,7 @@ Environments :
 docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1' -e MEMCACHED_PORT='11211' hatamiarash7/memcached-admin:latest
 ```
 
-Multiple server setup (using the `Default` cluster)
+#### Multiple server setup (using the `Default` cluster)
 
 Environments :  
 * **MEMCACHED_HOST** : Comma seperated hostname and optional port
