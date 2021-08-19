@@ -37,12 +37,28 @@ Another part can execute commands to any memcached server : get, set, delete, fl
 
 ### Install
 
+Single server setup
+
 Environments :  
-* **MEMCACHED_HOST** : Default address of a single server
-* **MEMCACHED_PORT** : Default port of a single server
+* **MEMCACHED_HOST** : Default address of the server
+* **MEMCACHED_PORT** : Default port of the server
 
 ```shell
 docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1' -e MEMCACHED_PORT='11211' hatamiarash7/memcached-admin:latest
+```
+
+Multiple server setup (using the `Default` cluster)
+
+Environments :  
+* **MEMCACHED_HOST** : Comma seperated hostname and optional port
+* **MEMCACHED_PORT** : Default port of the hostnames not having a port specified
+
+```shell
+docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1:11211,127.0.0.1:11212' hatamiarash7/memcached-admin:latest
+# or
+docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1,127.0.0.2' -e MEMCACHED_PORT='11211' hatamiarash7/memcached-admin:latest
+# or
+docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1:11212,127.0.0.1' -e MEMCACHED_PORT='11211' hatamiarash7/memcached-admin:latest
 ```
 
 You can define your cluster in **Configuration** section
