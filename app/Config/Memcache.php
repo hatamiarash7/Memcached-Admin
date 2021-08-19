@@ -3,6 +3,28 @@
 $host = getenv('MEMCACHED_HOST') ? getenv('MEMCACHED_HOST') : '127.0.0.1';
 $port = getenv('MEMCACHED_PORT') ? getenv('MEMCACHED_PORT') : '11211';
 
+$servers = array(
+    'Default' => array(
+        $host . ':' . $port =>
+            array(
+                'hostname' => $host,
+                'port' => $port,
+            ),
+    ),
+);
+
+$hosts = explode(",", $host);
+
+if (count($hosts) > 1) {
+    $servers = [];
+    foreach ($hosts as $host) {
+        $servers['Default'][$host] = [
+            'hostname' => parse_url($host, PHP_URL_HOST) ?: $host,
+            'port' => parse_url($host, PHP_URL_PORT) ?: $port
+        ];
+    }
+}
+
 return array(
     'stats_api' => 'Server',
     'slabs_api' => 'Server',
@@ -18,15 +40,5 @@ return array(
     'hit_rate_alert' => '90',
     'eviction_alert' => '0',
     'file_path' => 'Temp/',
-    'servers' =>
-        array(
-            'Default' =>
-                array(
-                    $host . ':' . $port =>
-                        array(
-                            'hostname' => $host,
-                            'port' => $port,
-                        ),
-                ),
-        ),
+    'servers' => $servers
 );
