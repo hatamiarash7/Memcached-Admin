@@ -2,12 +2,12 @@ name: Publish Image
 
 on:
   schedule:
-    - cron: '24 5 * * *'
+    - cron: "24 5 * * *"
   push:
-    branches: [ master ]
-    tags: [ 'v*.*.*' ]
+    branches: [master]
+    tags: ["v*.*.*"]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 env:
   REGISTRY: ghcr.io

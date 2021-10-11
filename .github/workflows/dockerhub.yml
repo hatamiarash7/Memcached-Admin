@@ -2,20 +2,18 @@ name: Publish Dockerhub
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: "0 2 * * *"
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 env:
   REGISTRY: docker.io
   IMAGE_NAME: hatamiarash7/memcached-admin
 
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
