@@ -1,4 +1,5 @@
 # Memcached Admin
+
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/hatamiarash7/memcached-admin) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/hatamiarash7/memcached-admin)  [![Docker Image CI](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-image.yml/badge.svg)](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-image.yml) [![Publish Image](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-publish.yml)
 
 This program allows to see in **real-time** (top-like) or from the start of the server, **stats for get, set, delete, increment, decrement, evictions, reclaimed, cas command**, as well as **server stats** (network, items, server version) with googlecharts and  **server internal configuration**
@@ -9,14 +10,16 @@ Another part can execute commands to any memcached server : get, set, delete, fl
 
 ![image](app.jpg)
 
-### Statistics
+## Statistics
+
 * Stats for each or all memcached servers, items, evicted, reclaimed ...
 * Stats for every command : set, get, delete, incr, decr, cas ...
 * Slabs stats (Memory, pages, memory wasted, items)
 * Items stats (View items in slabs, then data for each key)
 * Network stats (Traffic, bandwidth)
 
-### Commands
+## Commands
+
 * Execute commands : get, set, delete, flush_all on servers to administrate or debug it
 * Get data with key on servers
 * Delete keys on servers
@@ -24,11 +27,12 @@ Another part can execute commands to any memcached server : get, set, delete, fl
 * Execute telnet command directly from phpMemcachedAdmin
 * Search for specific pattern into all keys
 
-### Live Stats
+## Live Stats
+
 * Top-like real time stats with configurable alerts
 
+## Configuration
 
-### Configuration
 * Edit configuration directly from web page
 * phpMemcachedAdmin can use socket communication, PECL Memcache or Memcached API
 * Organize your servers into cluster
@@ -40,6 +44,7 @@ Another part can execute commands to any memcached server : get, set, delete, fl
 #### Single server setup
 
 Environments :  
+
 * **MEMCACHED_HOST** : Default address of the server
 * **MEMCACHED_PORT** : Default port of the server
 
@@ -50,6 +55,7 @@ docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1' -e MEMCACHED_PORT='1121
 #### Multiple server setup (using the `Default` cluster)
 
 Environments :  
+
 * **MEMCACHED_HOST** : Comma seperated hostname and optional port
 * **MEMCACHED_PORT** : Default port of the hostnames not having a port specified
 
