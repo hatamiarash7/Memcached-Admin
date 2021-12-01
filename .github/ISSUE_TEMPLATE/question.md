@@ -1,9 +1,9 @@
 ---
 name: Question
 about: Ask your Question here
-title: ''
+title: ""
 labels: question
-assignees: 'hatamiarash7'
+assignees: "hatamiarash7"
 ---
 
 ### Describe your Question

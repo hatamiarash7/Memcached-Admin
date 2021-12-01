@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
+title: ""
 labels: bug
-assignees: 'hatamiarash7'
+assignees: "hatamiarash7"
 ---
 
 ### Describe the bug
