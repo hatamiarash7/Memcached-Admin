@@ -20,9 +20,13 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
+          scan-type: "image"
           image-ref: "memcached-admin:$(date +%s)"
           format: "template"
           template: "@/contrib/sarif.tpl"
+          exit-code: "0"
+          ignore-unfixed: true
+          severity: "CRITICAL"
           output: "trivy-results.sarif"
 
       - name: Upload Trivy scan results to GitHub Security tab
