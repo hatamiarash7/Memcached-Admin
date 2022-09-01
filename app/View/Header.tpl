@@ -21,7 +21,7 @@
 </head>
 <body>
 <div style="margin:0pt auto; width:1000px; clear:both;">
-        <div style="font-weight:bold;font-size:1.2em;">Memcached Admin</div>
+        <div style="font-weight:bold; font-size:1.2em;text-align:center;">Memcached Admin</div>
         <div class="header corner full-size padding" style="text-align:center;margin-top:5px;">
 <?php
 # Live Stats view
