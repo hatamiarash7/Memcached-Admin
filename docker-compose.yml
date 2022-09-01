@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  memcached:
+    image: docker.io/bitnami/memcached:1
+    ports:
+      - "11211:11211"
+
+  admin:
+    image: hatamiarash7/memcached-admin:latest
+    environment:
+      - MEMCACHED_HOST=memcached
+      - MEMCACHED_PORT=11211
+    ports:
+      - "8085:80"
