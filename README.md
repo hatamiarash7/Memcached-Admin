@@ -2,7 +2,7 @@
 
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/hatamiarash7/memcached-admin) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/hatamiarash7/memcached-admin) [![Docker Image CI](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-image.yml/badge.svg)](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-image.yml) [![Publish Image](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/hatamiarash7/Memcached-Admin/actions/workflows/docker-publish.yml)
 
-This program allows to see in **real-time** (top-like) or from the start of the server, **stats for get, set, delete, increment, decrement, evictions, reclaimed, cas command**, as well as **server stats** (network, items, server version) with googlecharts and **server internal configuration**
+This program allows to see in **real-time** (top-like) or from the start of the server, **stats for get, set, delete, increment, decrement, evictions, reclaimed, cas command**, as well as **server stats** (network, items, server version) with google charts and **server internal configuration**
 
 You can go further to **see each server slabs, occupation, memory wasted and items** (**key & value**).
 
@@ -56,7 +56,7 @@ docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1' -e MEMCACHED_PORT='1121
 
 Environments :
 
-- **MEMCACHED_HOST** : Comma seperated hostname and optional port
+- **MEMCACHED_HOST** : Comma separated hostname and optional port
 - **MEMCACHED_PORT** : Default port of the hostnames not having a port specified
 
 ```shell
