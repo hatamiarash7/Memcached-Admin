@@ -69,6 +69,16 @@ docker run --rm -p 8080:80 -e MEMCACHED_HOST='127.0.0.1:11212,127.0.0.1' -e MEMC
 
 You can define your cluster in **Configuration** section
 
+### Test
+
+We have a `docker-compose.yml` file here for testing purpose. You can run it with the following command:
+
+```bash
+docker compose up -d
+```
+
+Open your browser and go to http://localhost:8085/index.php?server=memcached:11211 to see the dashboard.
+
 ---
 
 ## Support
