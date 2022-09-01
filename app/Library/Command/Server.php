@@ -25,7 +25,7 @@ class Library_Command_Server implements Library_Command_Interface
      *
      * @param String $command Command
      * @param String $server Server Hostname
-     * @param Integer $port Server Port
+     * @param int $port Server Port
      *
      * @return String|Boolean
      */
@@ -106,8 +106,7 @@ class Library_Command_Server implements Library_Command_Interface
     /**
      * Parse result to make an array
      *
-     * @param Boolean $string (optional) Parsing stats ?
-     *
+     * @param String $string (optional) Parsing stats ?
      * @param bool $stats
      * @return Array
      */
@@ -192,22 +191,22 @@ class Library_Command_Server implements Library_Command_Interface
         $slabs = array();
 
         # Finding uptime
-        $stats = $this->stats($server, $port);
+        $stats           = $this->stats($server, $port);
         $slabs['uptime'] = $stats['uptime'];
         unset($stats);
 
         # Executing command : slabs stats
         if (($result = $this->exec('stats slabs', $server, $port))) {
             # Parsing result
-            $result = $this->parse($result);
-            $slabs['active_slabs'] = $result['active_slabs'];
+            $result                  = $this->parse($result);
+            $slabs['active_slabs']   = $result['active_slabs'];
             $slabs['total_malloced'] = $result['total_malloced'];
             unset($result['active_slabs']);
             unset($result['total_malloced']);
 
             # Indexing by slabs
             foreach ($result as $key => $value) {
-                $key = preg_split('/:/', $key);
+                $key                     = preg_split('/:/', $key);
                 $slabs[$key[0]][$key[1]] = $value;
             }
 
@@ -218,7 +217,7 @@ class Library_Command_Server implements Library_Command_Interface
 
                 # Indexing by slabs
                 foreach ($result as $key => $value) {
-                    $key = preg_split('/:/', $key);
+                    $key                                = preg_split('/:/', $key);
                     $slabs[$key[1]]['items:' . $key[2]] = $value;
                 }
 
@@ -282,7 +281,7 @@ class Library_Command_Server implements Library_Command_Interface
      *
      * @return String
      */
-    function set($server, $port, $key, $data, $duration)
+    public function set($server, $port, $key, $data, $duration)
     {
         # Formatting data
         $data = preg_replace('/\r/', '', $data);
@@ -324,7 +323,7 @@ class Library_Command_Server implements Library_Command_Interface
      *
      * @return String
      */
-    function increment($server, $port, $key, $value)
+    public function increment($server, $port, $key, $value)
     {
         # Executing command : increment
         if (($result = $this->exec('incr ' . $key . ' ' . $value, $server, $port))) {
@@ -344,7 +343,7 @@ class Library_Command_Server implements Library_Command_Interface
      *
      * @return String
      */
-    function decrement($server, $port, $key, $value)
+    public function decrement($server, $port, $key, $value)
     {
         # Executing command : decrement
         if (($result = $this->exec('decr ' . $key . ' ' . $value, $server, $port))) {
@@ -363,7 +362,7 @@ class Library_Command_Server implements Library_Command_Interface
      *
      * @return String
      */
-    function flush_all($server, $port, $delay)
+    public function flush_all($server, $port, $delay)
     {
         # Executing command : flush_all
         if (($result = $this->exec('flush_all ' . $delay, $server, $port))) {
@@ -382,7 +381,7 @@ class Library_Command_Server implements Library_Command_Interface
      *
      * @return array
      */
-    function search($server, $port, $search)
+    public function search($server, $port, $search)
     {
         $slabs = array();
         $items = false;
@@ -395,7 +394,7 @@ class Library_Command_Server implements Library_Command_Interface
             unset($result['total_malloced']);
             # Indexing by slabs
             foreach ($result as $key => $value) {
-                $key = preg_split('/:/', $key);
+                $key            = preg_split('/:/', $key);
                 $slabs[$key[0]] = true;
             }
         }
@@ -431,7 +430,7 @@ class Library_Command_Server implements Library_Command_Interface
      *
      * @return String
      */
-    function telnet($server, $port, $command)
+    public function telnet($server, $port, $command)
     {
         # Executing command
         if (($result = $this->exec($command, $server, $port))) {

@@ -20,8 +20,8 @@ $request = (isset($_GET['show'])) ? $_GET['show'] : null;
 
 # Getting default cluster
 if (!isset($_GET['server'])) {
-    $clusters = array_keys($_ini->get('servers'));
-    $cluster = isset($clusters[0]) ? $clusters[0] : null;
+    $clusters       = array_keys($_ini->get('servers'));
+    $cluster        = isset($clusters[0]) ? $clusters[0] : null;
     $_GET['server'] = $cluster;
 }
 
@@ -34,7 +34,7 @@ switch ($request) {
     case 'items':
         # Initializing items array
         $server = null;
-        $items = false;
+        $items  = false;
 
         # Ask for one server and one slabs items
         if (isset($_GET['server']) && ($server = $_ini->server($_GET['server']))) {
@@ -42,7 +42,7 @@ switch ($request) {
         }
 
         # Getting stats to calculate server boot time
-        $stats = Library_Command_Factory::instance('stats_api')->stats($server['hostname'], $server['port']);
+        $stats    = Library_Command_Factory::instance('stats_api')->stats($server['hostname'], $server['port']);
         $infinite = (isset($stats['time'], $stats['uptime'])) ? ($stats['time'] - $stats['uptime']) : 0;
 
         # Items are well formed
@@ -80,26 +80,26 @@ switch ($request) {
         break;
 
     # Default : Stats for all or specific single server
-    default :
+    default:
         # Initializing stats & settings array
-        $stats = array();
-        $slabs = array();
+        $stats                   = array();
+        $slabs                   = array();
         $slabs['total_malloced'] = 0;
-        $slabs['total_wasted'] = 0;
-        $settings = array();
-        $status = array();
+        $slabs['total_wasted']   = 0;
+        $settings                = array();
+        $status                  = array();
 
         $cluster = null;
-        $server = null;
+        $server  = null;
 
         # Ask for a particular cluster stats
         if (isset($_GET['server']) && ($cluster = $_ini->cluster($_GET['server']))) {
             foreach ($cluster as $name => $server) {
                 # Getting Stats & Slabs stats
-                $data = array();
+                $data          = array();
                 $data['stats'] = Library_Command_Factory::instance('stats_api')->stats($server['hostname'], $server['port']);
                 $data['slabs'] = Library_Data_Analysis::slabs(Library_Command_Factory::instance('slabs_api')->slabs($server['hostname'], $server['port']));
-                $stats = Library_Data_Analysis::merge($stats, $data['stats']);
+                $stats         = Library_Data_Analysis::merge($stats, $data['stats']);
 
                 # Computing stats
                 if (isset($data['slabs']['total_malloced'], $data['slabs']['total_wasted'])) {
@@ -112,8 +112,8 @@ switch ($request) {
         } # Asking for a server stats
         elseif (isset($_GET['server']) && ($server = $_ini->server($_GET['server']))) {
             # Getting Stats & Slabs stats
-            $stats = Library_Command_Factory::instance('stats_api')->stats($server['hostname'], $server['port']);
-            $slabs = Library_Data_Analysis::slabs(Library_Command_Factory::instance('slabs_api')->slabs($server['hostname'], $server['port']));
+            $stats    = Library_Command_Factory::instance('stats_api')->stats($server['hostname'], $server['port']);
+            $slabs    = Library_Data_Analysis::slabs(Library_Command_Factory::instance('slabs_api')->slabs($server['hostname'], $server['port']));
             $settings = Library_Command_Factory::instance('stats_api')->settings($server['hostname'], $server['port']);
         }
 

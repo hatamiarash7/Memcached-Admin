@@ -10,7 +10,7 @@ interface Library_Command_Interface
      *
      * @return void
      */
-    function __construct();
+    public function __construct();
 
     /**
      * Send stats command to server

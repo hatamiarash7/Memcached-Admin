@@ -41,15 +41,15 @@ class Library_Command_Memcached implements Library_Command_Interface
             $stats = $return[$server . ':' . $port];
 
             # Adding value that miss
-            $stats['delete_hits'] = '';
+            $stats['delete_hits']   = '';
             $stats['delete_misses'] = '';
-            $stats['incr_hits'] = '';
-            $stats['incr_misses'] = '';
-            $stats['decr_hits'] = '';
-            $stats['decr_misses'] = '';
-            $stats['cas_hits'] = '';
-            $stats['cas_misses'] = '';
-            $stats['cas_badval'] = '';
+            $stats['incr_hits']     = '';
+            $stats['incr_misses']   = '';
+            $stats['decr_hits']     = '';
+            $stats['decr_misses']   = '';
+            $stats['cas_hits']      = '';
+            $stats['cas_misses']    = '';
+            $stats['cas_badval']    = '';
 
             return $stats;
         }
@@ -135,7 +135,7 @@ class Library_Command_Memcached implements Library_Command_Interface
      *
      * @return String
      */
-    function set($server, $port, $key, $data, $duration)
+    public function set($server, $port, $key, $data, $duration)
     {
         # Adding server
         self::$_memcache->addServer($server, $port);
@@ -181,7 +181,7 @@ class Library_Command_Memcached implements Library_Command_Interface
      *
      * @return String
      */
-    function increment($server, $port, $key, $value)
+    public function increment($server, $port, $key, $value)
     {
         # Adding server
         self::$_memcache->addServer($server, $port);
@@ -204,7 +204,7 @@ class Library_Command_Memcached implements Library_Command_Interface
      *
      * @return String
      */
-    function decrement($server, $port, $key, $value)
+    public function decrement($server, $port, $key, $value)
     {
         # Adding server
         self::$_memcache->addServer($server, $port);
@@ -247,7 +247,7 @@ class Library_Command_Memcached implements Library_Command_Interface
      * @return void
      * @throws Exception
      */
-    function search($server, $port, $search)
+    public function search($server, $port, $search)
     {
         throw new Exception('PECL Memcached does not support search function, use Server instead');
     }
@@ -263,7 +263,7 @@ class Library_Command_Memcached implements Library_Command_Interface
      * @return String
      * @throws Exception
      */
-    function telnet($server, $port, $command)
+    public function telnet($server, $port, $command)
     {
         throw new Exception('PECL Memcached does not support telnet, use Server instead');
     }

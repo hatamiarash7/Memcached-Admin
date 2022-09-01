@@ -23,8 +23,8 @@ if (isset($_GET['cluster']) && ($_GET['cluster'] != null)) {
     $cluster = $_GET['cluster'];
 } # Getting default cluster
 else {
-    $clusters = array_keys($_ini->get('servers'));
-    $cluster = isset($clusters[0]) ? $clusters[0] : null;
+    $clusters        = array_keys($_ini->get('servers'));
+    $cluster         = isset($clusters[0]) ? $clusters[0] : null;
     $_GET['cluster'] = $cluster;
 }
 
@@ -67,8 +67,8 @@ switch ($request) {
 
         # Initializing variables
         $actual = array();
-        $stats = array();
-        $time = 0;
+        $stats  = array();
+        $time   = 0;
 
         # Requesting stats for each server
         foreach ($_ini->cluster($cluster) as $name => $server) {
@@ -99,11 +99,11 @@ switch ($request) {
                 $stats[$server] = Library_Data_Analysis::stats($stats[$server]);
 
                 # Because we make a diff on every key, we must reassign some values
-                $stats[$server]['bytes_percent'] = sprintf('%.1f', $actual[$server]['bytes'] / $actual[$server]['limit_maxbytes'] * 100);
-                $stats[$server]['bytes'] = $actual[$server]['bytes'];
-                $stats[$server]['limit_maxbytes'] = $actual[$server]['limit_maxbytes'];
+                $stats[$server]['bytes_percent']    = sprintf('%.1f', $actual[$server]['bytes'] / $actual[$server]['limit_maxbytes'] * 100);
+                $stats[$server]['bytes']            = $actual[$server]['bytes'];
+                $stats[$server]['limit_maxbytes']   = $actual[$server]['limit_maxbytes'];
                 $stats[$server]['curr_connections'] = $actual[$server]['curr_connections'];
-                $stats[$server]['query_time'] = $actual[$server]['query_time'];
+                $stats[$server]['query_time']       = $actual[$server]['query_time'];
             }
         }
 
@@ -115,7 +115,7 @@ switch ($request) {
         break;
 
     # Default : No command
-    default :
+    default:
         # Initializing : making stats dump
         $stats = array();
         foreach ($_ini->cluster($cluster) as $name => $server) {

@@ -256,7 +256,7 @@ switch ($request) {
         }
         break;
     # Default : No command
-    default :
+    default:
         # Showing header
         include 'View/Header.tpl';
 

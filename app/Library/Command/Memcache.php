@@ -76,7 +76,7 @@ class Library_Command_Memcache implements Library_Command_Interface
         # Executing command : slabs
         if (($slabs = self::$_memcache->getStats('slabs'))) {
             # Finding uptime
-            $stats = $this->stats($server, $port);
+            $stats           = $this->stats($server, $port);
             $slabs['uptime'] = $stats['uptime'];
             unset($stats);
 
@@ -153,7 +153,7 @@ class Library_Command_Memcache implements Library_Command_Interface
      *
      * @return String
      */
-    function set($server, $port, $key, $data, $duration)
+    public function set($server, $port, $key, $data, $duration)
     {
         # Adding server
         self::$_memcache->addServer($server, $port);
@@ -198,7 +198,7 @@ class Library_Command_Memcache implements Library_Command_Interface
      *
      * @return String
      */
-    function increment($server, $port, $key, $value)
+    public function increment($server, $port, $key, $value)
     {
         # Adding server
         self::$_memcache->addServer($server, $port);
@@ -221,7 +221,7 @@ class Library_Command_Memcache implements Library_Command_Interface
      *
      * @return String
      */
-    function decrement($server, $port, $key, $value)
+    public function decrement($server, $port, $key, $value)
     {
         # Adding server
         self::$_memcache->addServer($server, $port);
@@ -244,7 +244,7 @@ class Library_Command_Memcache implements Library_Command_Interface
      *
      * @return String
      */
-    function flush_all($server, $port, $delay)
+    public function flush_all($server, $port, $delay)
     {
         # Adding server
         self::$_memcache->addServer($server, $port);
@@ -265,7 +265,7 @@ class Library_Command_Memcache implements Library_Command_Interface
      * @return void
      * @throws Exception
      */
-    function search($server, $port, $search)
+    public function search($server, $port, $search)
     {
         throw new Exception('PECL Memcache does not support search function, use Server instead');
     }
@@ -281,7 +281,7 @@ class Library_Command_Memcache implements Library_Command_Interface
      * @return String
      * @throws Exception
      */
-    function telnet($server, $port, $command)
+    public function telnet($server, $port, $command)
     {
         throw new Exception('PECL Memcache does not support telnet, use Server instead');
     }

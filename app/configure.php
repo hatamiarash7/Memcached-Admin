@@ -17,7 +17,7 @@ $_ini = Library_Configuration_Loader::singleton();
 
 # Initializing requests
 $request = (isset($_GET['request_write'])) ? $_GET['request_write'] : null;
-$write = null;
+$write   = null;
 
 # Display by request type
 switch ($request) {
@@ -92,7 +92,7 @@ switch ($request) {
         break;
 
     # Default : No command
-    default :
+    default:
         break;
 }
 
