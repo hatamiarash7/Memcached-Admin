@@ -209,7 +209,7 @@ class Library_Data_Analysis
     /**
      * Calculate Uptime
      *
-     * @param int $uptime Uptime timestamp
+     * @param float $uptime Uptime timestamp
      *
      * @return String
      */

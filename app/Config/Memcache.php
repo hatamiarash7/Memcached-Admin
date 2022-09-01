@@ -24,6 +24,8 @@ if (count($hosts) > 1) {
     }
 }
 
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 return array(
     'stats_api'          => 'Server',
     'slabs_api'          => 'Server',
