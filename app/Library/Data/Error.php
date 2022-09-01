@@ -33,7 +33,7 @@ class Library_Data_Error
     /**
      * Return errors count
      *
-     * @return Integer
+     * @return int
      */
     public static function count()
     {

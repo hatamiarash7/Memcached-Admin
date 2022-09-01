@@ -22,7 +22,7 @@ class Library_Command_Factory
      *
      * @param String $command Type of command
      *
-     * @return void
+     * @return object
      */
     public static function instance($command)
     {
@@ -60,7 +60,7 @@ class Library_Command_Factory
      * Accessor to command class instance by type
      *
      * @param $api
-     * @return void
+     * @return object
      */
     public static function api($api)
     {
