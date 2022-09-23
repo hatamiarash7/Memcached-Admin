@@ -8,7 +8,7 @@ You can go further to **see each server slabs, occupation, memory wasted and ite
 
 Another part can execute commands to any memcached server : get, set, delete, flush_all, as well as execute any commands (like stats) with telnet
 
-![image](app.jpg)
+![image](app.png)
 
 ## Statistics
 
