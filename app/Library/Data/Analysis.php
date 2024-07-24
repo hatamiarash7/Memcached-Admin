@@ -209,7 +209,7 @@ class Library_Data_Analysis
                 $slabs[$id]['request_rate'] = sprintf(
                     '%.1f',
                     ($slabSum / $slabs['uptime']));
-                $slab['mem_requested'] = $slab['mem_requested'] ?: 0;
+                $slab['mem_requested'] = isset($slab['mem_requested']) ? $slab['mem_requested'] : 0;
                 $slabs[$id]['mem_wasted'] = (
                     ($slab['total_chunks'] * $slab['chunk_size']) < $slab['mem_requested']) ?
                     (($slab['total_chunks'] - $slab['used_chunks']) * $slab['chunk_size']) :
