@@ -378,7 +378,53 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
         <div class="sub-header corner padding">Cache Size <span class="green">Graphic</span></div>
         <div class="container corner padding">
             <div class="line">
-                <img src="http://chart.apis.google.com/chart?chf=bg,s,ebebeb&amp;chs=281x225&amp;cht=p&amp;chco=b5463f|2a707b|ffffff&amp;chd=t:<?php echo $wasted_percent; ?>,<?php echo $used_percent; ?>,<?php echo $free_percent; ?>&amp;chdl=Wasted%20<?php echo $wasted_percent; ?>%|Used%20<?php echo $used_percent; ?>%|Free%20<?php echo $free_percent; ?>%&amp;chdlp=b" alt="Cache Size by GoogleCharts" width="281" height="225"/>
+                <?php
+                $chart = <<<JSON
+{
+  "type": "pie",
+  "data": {
+    "datasets": [
+      {
+        "data": [
+          {$wasted_percent},
+          {$used_percent},
+          {$free_percent}
+        ],
+        "backgroundColor": [
+          "#b5463f",
+          "#2a707b",
+          "##ffffff"
+        ],
+        "type": "pie",
+        "borderWidth": 0,
+      }
+    ],
+    "labels": [
+      "Wasted",
+      "Used",
+      "Free"
+    ]
+  },
+  "options": {
+    "legend": {
+      "position": "bottom",
+    },
+    plugins: {
+      datalabels: {
+        align: 'right',
+        color: '#000',
+        backgroundColor: 'rgba(255, 255, 255, 0.6)',
+        borderRadius: 5,
+        formatter: (value) => {
+                return value + '%';
+                },
+      },
+    },
+  }
+}
+JSON;
+                ?>
+                <img src="https://quickchart.io/chart?c=<?php echo urlencode($chart); ?>&height=225&width=281&format=webp" alt="Cache Size by QuickChart" width="281" height="225"/>
             </div>
         </div>
 <?php
@@ -429,7 +475,63 @@ elseif((isset($_GET['server'])) && ($cluster = $_ini->cluster($_GET['server'])))
         <div class="sub-header corner padding">Hit &amp; Miss Rate <span class="green">Graphic</span></div>
         <div class="container corner padding">
             <div class="line">
-            <img src="http://chart.apis.google.com/chart?cht=bvg&amp;chd=t:<?php echo $stats['get_hits_percent']; ?>,<?php echo $stats['get_misses_percent']; ?>&amp;chs=280x145&amp;chl=Hit|Miss&amp;chf=bg,s,ebebeb&amp;chco=2a707b|b5463f&amp;chxt=y&amp;chbh=a&amp;chm=N,000000,0,-1,11" alt="Cache Hit &amp; Miss Rate by GoogleChart" width="280" height="145"/>
+            <?php
+            // TODO!
+            $chart = <<<JSON
+{
+  "type": "bar",
+  "data": {
+    "datasets": [
+      {
+        "data": [
+          {$stats['get_hits_percent']},
+          {$stats['get_misses_percent']}
+        ],
+        "backgroundColor": [
+          "#2a707b",
+          "#b5463f"
+        ],
+      }
+    ],
+    "labels": [
+      "Hit",
+      "Miss"
+    ]
+  },
+  "options": {
+    "legend": {
+      "display": false
+    },
+    "scales": {
+      "xAxes": [
+        {
+            "display": true,
+        }
+      ],
+      "yAxes": [
+        {
+          "ticks": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    },
+    plugins: {
+      datalabels: {
+        color: '#000',
+        backgroundColor: 'rgba(255, 255, 255, 0.6)',
+        borderRadius: 5,
+        formatter: (value) => {
+                return value + '%';
+                },
+      },
+    },
+  }
+}
+JSON;
+            ?>
+            <img src="https://quickchart.io/chart?c=<?php echo urlencode($chart); ?>&height=145&width=280&format=webp" alt="Cache Hit &amp; Miss Rate by QuickChart" width="280" height="145"/>
             </div>
         </div>
 
